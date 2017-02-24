@@ -1,0 +1,68 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main(){
+setlocale(LC_ALL, "Russian");
+ifstream read;
+char a,b,c,d,e,f,h,g,u; 
+int i,k,n; 
+char s[100000];
+k=0;
+n=1;
+read.open("E:\\ОП.txt");
+while(!read.eof()){
+read.get(a);
+s[k]=a; 
+k=k+1;}
+read.close();
+cout<<"Предложение № "<<n;
+for (i=0;i<k-2;i++) { 
+a=s[i];
+b=s[i+1];
+c=s[i+2]; 
+d=s[i-1];
+e=s[i-2];
+f=s[i-3];
+h=s[i-4];
+g=s[i+3];
+u=s[i+4];
+cout<<s[i];
+//Сокращения
+if (int(a)==46){
+  	if ((int(e)==32)&&(int(d)==-29)&&(int(b)==32)&&(int(c)>-33)&&(int(c)<1)) continue;//Сокращение г.
+    if ((int(h)==32)&&(int(f)==-26)&&(int(e)==-27)&&(int(d)==-19)&&((int(b)==32||(int(b)>-33)&&(int(b)<1)))) continue;//Сокращение жен.
+	if ((int(h)==32)&&(int(f)==-20)&&(int(e)==-13)&&(int(d)==-26)&&((int(b)==32||(int(b)>-33)&&(int(b)<1)))) continue;//Сокращение муж.
+	if ((int(h)==32)&&(int(f)==-20)&&(int(e)==-27)&&(int(d)==-28)&&((int(b)==32||(int(b)>-33)&&(int(b)<1)))) continue;//Сокращение мед.
+	if ((int(h)==32)&&(int(f)==-19)&&(int(e)==-27)&&(int(d)==-28)&&((int(b)==32||(int(b)>-33)&&(int(b)<1)))) continue;//Сокращение нед.
+	if ((int(h)==32)&&(int(f)==-15)&&(int(e)==-13)&&(int(d)==-22)&&((int(b)==32||(int(b)>-33)&&(int(b)<1)||(int(b)==44)))) continue;//Сокращение сек.
+	if ((int(h)==32)&&(int(f)==-15)&&(int(e)==-14)&&(int(d)==-16)&&((int(b)==32||(int(b)>-33)&&(int(b)<1)||(int(b)==44)))) continue;//Сокращение стр.
+	if ((int(h)==32)&&(int(f)==-14)&&(int(e)==-27)&&(int(d)==-21)&&((int(b)==32||(int(b)>-33)&&(int(b)<1)))) continue;//Сокращение тел.
+	if ((int(h)==32)&&(int(f)==-32)&&(int(e)==-13)&&(int(d)==-28)&&((int(b)==32||(int(b)>-33)&&(int(b)<1)))) continue;//Сокращение ауд.
+	if (((int(f)==32)||(int(f)==40))&&(int(e)==-15)&&(int(d)==-20)&&((int(b)==32)||(int(b)==44))) continue;//Сокращение см.
+	if ((int(f)==32)&&(int(e)==-13)&&(int(d)==-21)&&((int(b)==32||(int(b)>-33)&&(int(b)<1)))) continue;//Сокращение ул.
+	if ((int(f)==32)&&(int(e)==-22)&&(int(d)==-30)&&((int(b)==32||(int(b)>-33)&&(int(b)<1)))) continue;//Сокращение кв.
+	if ((int(f)==32)&&(int(e)==-22)&&(int(d)==-20)&&((int(b)==32||(int(b)>-33)&&(int(b)<1)))) continue;//Сокращение км.
+	if ((int(e)==32)&&(int(d)==-14)&&(int(b)==-28)&&(int(c)==46)&&(int(g)==32)) continue;//Сокращение т.д.
+	if ((int(e)==32)&&(int(d)==-14)&&(int(b)==-17)&&(int(c)==46)&&(int(g)==32)) continue;//Сокращение т.п.
+    if ((int(e)==32)&&(int(d)==-14)&&(int(b)==-22)&&(int(c)==-46)&&(int(g)==32)) continue;////Сокращение т.к.
+	if ((int(e)==32)&&(int(d)==-14)&&(int(b)==-27)&&(int(c)==46)&&(int(g)==32)) continue;//Сокращение т.е.
+	if ((int(e)==32)&&(int(d)==-14)&&(int(b)==-18)&&(int(c)==46)&&(int(g)==32)) continue;//Сокращение т.о.
+}
+//Многоточие ...
+if ((int)a==46)
+if ((int)b==46) continue; 
+else {n=n+1;cout<<"\n"<<"Предложение № "<<n;continue;}
+// Проверка на !? ?!!
+if (((int)a==33)||((int)a==63))
+if (((int)b==33)||((int)b==63)||((int)b==46)) continue; 
+else if (int(b)==32) {n=n+1;cout<<"\n"<<"Предложение № "<<n;continue;}
+//Смайлики
+{if (((int(a)==40)||(int(a)==41)||(int(a)==58))&&((int(d)==61)||(int(d)==58)||(int(d)==45)))
+if ((int(b)==41)||(int(b)==40)) continue; 
+else if (int(b)==32) {n=n+1;cout<<"\n"<<"Предложение № "<<n;continue;}
+}
+if ((int(a)==33)||(int(a)==63)||(int (a)==46))
+if ((int(b)!=33)||(int(b)!=63)||(int(b)!=46))
+if ((int(b)==32)) 
+if ((int(c)>-65)&(int(c)<-33)){n=n+1;cout<<"\n"<<"Предложение № "<<n;continue;}}
+ cout<<s[i+1]<<"\n";}
